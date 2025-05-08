@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { ProductCardProps } from "../types/product";
 
-export function useFetch(url: string) {
-  const [data, setData] = useState<ProductCardProps[]>([]);
+export function useFetch<T>(url: string) {
+  const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 

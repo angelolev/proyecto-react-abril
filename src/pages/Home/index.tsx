@@ -1,14 +1,13 @@
-import "./App.css";
-import ProductCard from "./components/ProductCard";
-import { ProductCardProps } from "./types/product";
-import { useFetch } from "./hooks/useFetch";
+import { useFetch } from "../../hooks/useFetch";
+import { ProductCardProps } from "../../types/product";
+import ProductCard from "../../components/ProductCard";
 
-function App() {
+function Home() {
   const {
     data: products,
     loading,
     error,
-  } = useFetch("https://fakestoreapi.com/products");
+  } = useFetch<ProductCardProps[]>("https://fakestoreapi.com/products");
 
   if (loading) {
     return <div>Cargando...</div>;
@@ -16,6 +15,10 @@ function App() {
 
   if (error) {
     return <div>Error: {error.message}</div>;
+  }
+
+  if (!products) {
+    return <div>No hay productos</div>;
   }
 
   return (
@@ -32,4 +35,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
