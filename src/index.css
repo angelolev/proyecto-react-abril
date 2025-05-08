@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme {
+  --color-peru: #e74c3c;
+}
+
+.prueba {
+  @apply uppercase text-center text-[32px] lg:text-[48px];
+}
