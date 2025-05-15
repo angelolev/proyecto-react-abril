@@ -1,9 +1,18 @@
 import { useParams } from "react-router";
 import { useFetch } from "../../hooks/useFetch";
-import { ProductCardProps } from "../../types/product";
+import { ProductCardProps } from "../../types";
+import { useContext } from "react";
+import { ShoppingCartContext } from "../../context";
 
 function ProductDetail() {
   const { id } = useParams();
+  const context = useContext(ShoppingCartContext);
+
+  const handleAddToCart = (product: ProductCardProps) => {
+    const updatedCart = [...context.cartProducts, product];
+    context.setCartProducts(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
 
   const {
     data: product,
@@ -45,12 +54,16 @@ function ProductDetail() {
             {product.description}
           </p>
           <div className="product-actions mt-4">
-            <button className="bg-black text-white px-4 py-2 rounded-md cursor-pointer">
+            <button
+              onClick={() => handleAddToCart(product)}
+              className="bg-black text-white px-4 py-2 rounded-md cursor-pointer"
+            >
               Agregar al carrito
             </button>
           </div>
         </div>
       </div>
+      <p>Cantidad de productos en el carrito {context.cartProducts.length}</p>
     </section>
   );
 }

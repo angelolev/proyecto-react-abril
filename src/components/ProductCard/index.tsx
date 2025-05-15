@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { ProductCardProps } from "../../types/product";
+import { ProductCardProps } from "../../types";
 import "./index.css";
 
 function ProductCard({ title, price, image, id }: ProductCardProps) {

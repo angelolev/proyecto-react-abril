@@ -1,5 +1,5 @@
 import { useFetch } from "../../hooks/useFetch";
-import { ProductCardProps } from "../../types/product";
+import { ProductCardProps } from "../../types";
 import ProductCard from "../../components/ProductCard";
 
 function Home() {
