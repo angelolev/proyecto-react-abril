@@ -7,7 +7,7 @@ function Home() {
     data: products,
     loading,
     error,
-  } = useFetch<ProductCardProps[]>("https://fakestoreapi.com/products");
+  } = useFetch<ProductCardProps[]>("products");
 
   if (loading) {
     return <div>Cargando...</div>;

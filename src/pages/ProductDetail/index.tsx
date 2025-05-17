@@ -18,7 +18,7 @@ function ProductDetail() {
     data: product,
     loading,
     error,
-  } = useFetch<ProductCardProps>(`https://fakestoreapi.com/products/${id}`);
+  } = useFetch<ProductCardProps>("products", id);
 
   if (loading) {
     return <div>Cargando producto...</div>;
